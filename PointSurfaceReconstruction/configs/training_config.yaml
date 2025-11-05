@@ -1,0 +1,42 @@
+# Конфигурация обучения
+training:
+  batch_size: 32
+  learning_rate: 1e-4
+  num_epochs: 1000
+  weight_decay: 1e-6
+  warmup_epochs: 10
+  patience: 50
+  grad_clip: 1.0
+  num_workers: 4
+  visualization: true
+  
+  # Настройки лоссов
+  loss_weights:
+    sdf_loss: 1.0
+    surface_loss: 0.1
+    normal_loss: 0.01
+    eikonal_loss: 0.1
+
+# Конфигурация модели
+model:
+  latent_size: 256
+  input_dim: 3
+  local_feat_size: 64
+  decoder_hidden_dims: [256, 256, 256]
+  global_decoder_hidden_dims: [512, 512, 256]
+  dropout_rate: 0.1
+
+# Конфигурация данных
+data:
+  num_points: 5000
+  sdf_clip: 0.1
+  use_kdtree: true
+  num_local_points: 512
+  validation_split: 0.1
+
+# Настройки системы
+system:
+  use_gpu: true
+  random_seed: 42
+  log_level: INFO
+  checkpoint_frequency: 10

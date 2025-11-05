@@ -1,0 +1,15 @@
+# Конфигурация модели
+pointnet:
+  input_dim: 3
+  feature_dim: 1024
+  layers: [64, 128, 1024]
+
+global_decoder:
+  input_dim: 1024
+  hidden_dims: [512, 256, 128]
+  output_dim: 3
+
+local_decoder:
+  input_dim: 1024 + 3  # features + query point
+  hidden_dims: [256, 128, 64]
+  output_dim: 1  # SDF value
